@@ -9,7 +9,7 @@ interface Teacher {
 }
 
 // Define the Directors interface that extends Teacher
-interface Directors extends Teacher {
+interface Director extends Teacher {
   numberOfReports: number;
 }
 
@@ -23,7 +23,7 @@ const teacher3: Teacher = {
 };
 
 // Create director1 object as per example
-const director1: Directors = {
+const director1: Director = {
   firstName: 'John',
   lastName: 'Doe',
   location: 'London',
@@ -44,7 +44,7 @@ const teacher1: Teacher = {
   yearsOfExperience: 5,
 };
 
-const director2: Directors = {
+const director2: Director = {
   firstName: 'Alice',
   lastName: 'Johnson',
   fullTimeEmployee: true,
@@ -103,7 +103,7 @@ function displayTeacher(teacher: Teacher): void {
 }
 
 // Function to display director information
-function displayDirector(director: Directors): void {
+function displayDirector(director: Director): void {
   const container = document.createElement('div');
   container.style.margin = '20px';
   container.style.padding = '20px';
