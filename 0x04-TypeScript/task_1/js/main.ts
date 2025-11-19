@@ -13,6 +13,19 @@ interface Director extends Teacher {
   numberOfReports: number;
 }
 
+// Define interface for printTeacher function
+interface printTeacherFunction {
+  (firstName: string, lastName: string): string;
+}
+
+// Implement the printTeacher function
+const printTeacher: printTeacherFunction = (
+  firstName: string,
+  lastName: string
+): string => {
+  return `${firstName} ${lastName}`;
+};
+
 // Create teacher3 object as per example
 const teacher3: Teacher = {
   firstName: 'John',
@@ -34,6 +47,9 @@ const director1: Director = {
 // Log the objects to console
 console.log(teacher3);
 console.log(director1);
+
+// Test the printTeacher function
+console.log(printTeacher('John', 'Doe')); // Should output: John Doe
 
 // Additional examples to demonstrate the interfaces
 const teacher1: Teacher = {
@@ -166,6 +182,42 @@ document.addEventListener('DOMContentLoaded', () => {
   title.style.textAlign = 'center';
   title.style.color = '#333';
   document.body.appendChild(title);
+
+  // Demonstrate printTeacher function on the page
+  const printTeacherDemo = document.createElement('div');
+  printTeacherDemo.style.margin = '20px';
+  printTeacherDemo.style.padding = '15px';
+  printTeacherDemo.style.backgroundColor = '#e7f3ff';
+  printTeacherDemo.style.border = '1px solid #2196F3';
+  printTeacherDemo.style.borderRadius = '5px';
+
+  const printTeacherTitle = document.createElement('h3');
+  printTeacherTitle.textContent = 'printTeacher Function Demo';
+  printTeacherTitle.style.color = '#2196F3';
+  printTeacherDemo.appendChild(printTeacherTitle);
+
+  const printTeacherExample1 = document.createElement('p');
+  printTeacherExample1.textContent = `printTeacher("John", "Doe") = "${printTeacher(
+    'John',
+    'Doe'
+  )}"`;
+  printTeacherDemo.appendChild(printTeacherExample1);
+
+  const printTeacherExample2 = document.createElement('p');
+  printTeacherExample2.textContent = `printTeacher("Jane", "Smith") = "${printTeacher(
+    'Jane',
+    'Smith'
+  )}"`;
+  printTeacherDemo.appendChild(printTeacherExample2);
+
+  const printTeacherExample3 = document.createElement('p');
+  printTeacherExample3.textContent = `printTeacher("Alice", "Johnson") = "${printTeacher(
+    'Alice',
+    'Johnson'
+  )}"`;
+  printTeacherDemo.appendChild(printTeacherExample3);
+
+  document.body.appendChild(printTeacherDemo);
 
   const subtitle = document.createElement('h2');
   subtitle.textContent = 'Teachers';
