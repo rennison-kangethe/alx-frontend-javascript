@@ -9,7 +9,7 @@ interface Teacher {
 }
 
 // Define the Directors interface that extends Teacher
-interface Director extends Teacher {
+interface Directors extends Teacher {
   numberOfReports: number;
 }
 
@@ -18,13 +18,10 @@ interface printTeacherFunction {
   (firstName: string, lastName: string): string;
 }
 
-// Implement the printTeacher function
-const printTeacher: printTeacherFunction = (
-  firstName: string,
-  lastName: string
-): string => {
+// Implement the printTeacher function using function keyword
+function printTeacher(firstName: string, lastName: string): string {
   return `${firstName} ${lastName}`;
-};
+}
 
 // Create teacher3 object as per example
 const teacher3: Teacher = {
@@ -36,7 +33,7 @@ const teacher3: Teacher = {
 };
 
 // Create director1 object as per example
-const director1: Director = {
+const director1: Directors = {
   firstName: 'John',
   lastName: 'Doe',
   location: 'London',
@@ -60,7 +57,7 @@ const teacher1: Teacher = {
   yearsOfExperience: 5,
 };
 
-const director2: Director = {
+const director2: Directors = {
   firstName: 'Alice',
   lastName: 'Johnson',
   fullTimeEmployee: true,
@@ -119,7 +116,7 @@ function displayTeacher(teacher: Teacher): void {
 }
 
 // Function to display director information
-function displayDirector(director: Director): void {
+function displayDirector(director: Directors): void {
   const container = document.createElement('div');
   container.style.margin = '20px';
   container.style.padding = '20px';
