@@ -13,14 +13,21 @@ interface Directors extends Teacher {
   numberOfReports: number;
 }
 
+// Define interface for the teacher name object
+interface TeacherName {
+  firstName: string;
+  lastName: string;
+}
+
 // Define interface for printTeacher function
 interface printTeacherFunction {
-  (firstName: string, lastName: string): string;
+  (teacher: TeacherName): string;
 }
 
 // Implement the printTeacher function using function keyword
-function printTeacher(firstName: string, lastName: string): string {
-  return `${firstName} ${lastName}`;
+function printTeacher(teacher: TeacherName): string {
+  const firstInitial = teacher.firstName.charAt(0).toUpperCase();
+  return `${firstInitial}. ${teacher.lastName}`;
 }
 
 // Create teacher3 object as per example
@@ -45,8 +52,10 @@ const director1: Directors = {
 console.log(teacher3);
 console.log(director1);
 
-// Test the printTeacher function
-console.log(printTeacher('John', 'Doe')); // Should output: John Doe
+// Test the printTeacher function with objects
+console.log(printTeacher({ firstName: 'John', lastName: 'Doe' })); // Should output: J. Doe
+console.log(printTeacher({ firstName: 'Jane', lastName: 'Smith' })); // Should output: J. Smith
+console.log(printTeacher({ firstName: 'Alice', lastName: 'Johnson' })); // Should output: A. Johnson
 
 // Additional examples to demonstrate the interfaces
 const teacher1: Teacher = {
@@ -75,7 +84,7 @@ function displayTeacher(teacher: Teacher): void {
   container.style.borderRadius = '5px';
 
   const title = document.createElement('h3');
-  title.textContent = `Teacher: ${teacher.firstName} ${teacher.lastName}`;
+  title.textContent = `Teacher: ${printTeacher(teacher)}`;
   container.appendChild(title);
 
   const details = document.createElement('ul');
@@ -125,7 +134,7 @@ function displayDirector(director: Directors): void {
   container.style.backgroundColor = '#f9f9f9';
 
   const title = document.createElement('h3');
-  title.textContent = `Director: ${director.firstName} ${director.lastName}`;
+  title.textContent = `Director: ${printTeacher(director)}`;
   title.style.color = '#4CAF50';
   container.appendChild(title);
 
@@ -194,23 +203,20 @@ document.addEventListener('DOMContentLoaded', () => {
   printTeacherDemo.appendChild(printTeacherTitle);
 
   const printTeacherExample1 = document.createElement('p');
-  printTeacherExample1.textContent = `printTeacher("John", "Doe") = "${printTeacher(
-    'John',
-    'Doe'
+  printTeacherExample1.textContent = `printTeacher({firstName: "John", lastName: "Doe"}) = "${printTeacher(
+    { firstName: 'John', lastName: 'Doe' }
   )}"`;
   printTeacherDemo.appendChild(printTeacherExample1);
 
   const printTeacherExample2 = document.createElement('p');
-  printTeacherExample2.textContent = `printTeacher("Jane", "Smith") = "${printTeacher(
-    'Jane',
-    'Smith'
+  printTeacherExample2.textContent = `printTeacher({firstName: "Jane", lastName: "Smith"}) = "${printTeacher(
+    { firstName: 'Jane', lastName: 'Smith' }
   )}"`;
   printTeacherDemo.appendChild(printTeacherExample2);
 
   const printTeacherExample3 = document.createElement('p');
-  printTeacherExample3.textContent = `printTeacher("Alice", "Johnson") = "${printTeacher(
-    'Alice',
-    'Johnson'
+  printTeacherExample3.textContent = `printTeacher({firstName: "Alice", lastName: "Johnson"}) = "${printTeacher(
+    { firstName: 'Alice', lastName: 'Johnson' }
   )}"`;
   printTeacherDemo.appendChild(printTeacherExample3);
 
